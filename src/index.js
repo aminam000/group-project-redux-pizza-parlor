@@ -9,10 +9,9 @@ import logger from 'redux-logger';
 
 
 //reducers
-const pizzas = (state = [], action) => {
-    switch (action.type) {
-        case "ADD_PIZZA":
-          return action.payload;
+const pizzaList = (state = [], action) => {
+    if (action.type === 'ALL_PIZZAS') {
+        return action.payload;
       }
       return state;
     }
@@ -26,7 +25,6 @@ const pizzas = (state = [], action) => {
       return state;
     }
   
-
 
   const cart = (state = [], action) => {
     switch (action.type) {
@@ -46,7 +44,7 @@ const storeInstance = createStore(
      //this is out redux store
 
  
-      pizzas,
+      pizzaList,
       info,
       cart,
     }),
