@@ -10,9 +10,8 @@ import logger from 'redux-logger';
 
 //reducers
 const pizzaList = (state = [], action) => {
-    switch (action.type) {
-        case "ALL_PIZZAS":
-          return action.payload;
+    if (action.type === 'ALL_PIZZAS') {
+        return action.payload;
       }
       return state;
     }

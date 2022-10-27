@@ -1,34 +1,22 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function PizzaSelect(){
-
-    const pizzaList = useSelector( store => store.pizzaList);
+    // const params = useParams();
     const dispatch = useDispatch();
+    const pizzaList = useSelector( store => store.pizzaList);
+    console.log('pizzalist', pizzaList)
     
-    useEffect(() => {
-        axios({
-            method: 'GET', 
-            url: '/api/pizza'
-        })
-            .then((response) => {
-                console.log(' the pizzas', response.data)
-
-                dispatch({
-                    type: 'ALL_PIZZAS',
-                    payload: response.data
-                });
-            })
-            .catch((err) => {
-                console.error('error in GET pizzas', err)
-            });
-    }), [];
-
-
+    
     return(
         <>
-            <h1> {pizzaList.name}</h1>
+            {pizzaList.map((pizza, index) =>
+                <li key={index}> 
+                    {pizza.name}
+                </li>
+            )}
         </>
     );
 }
