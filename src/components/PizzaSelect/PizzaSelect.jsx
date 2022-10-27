@@ -1,17 +1,14 @@
 
-import {useEffect} from 'react';
 
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import axios from 'axios';
+import PizzaSelectItem from '../PizzaSelectItem/PizzaSelectItem';
 
 function PizzaSelect(){
     const [active, setActive] = useState(true);
 
     // const params = useParams();
-    const dispatch = useDispatch();
     const pizzaList = useSelector( store => store.pizzaList);
     console.log('pizzalist', pizzaList)
     
@@ -33,29 +30,15 @@ function PizzaSelect(){
     return(
         <>
             <h2>Step 1: Select Your Pizza</h2>
+
             {pizzaList.map((pizza, index) => (
-                
-                <div key={index}> 
-                <img src={pizza.image_path} />
-                    <p>{pizza.name}</p>
-                    <p>{pizza.description}</p>
-                    <p>{pizza.price}</p>
-                    
-                    {active ? (
-                        <button className="active"
-                            onClick={() => addPizza()}> 
-                            ADD
-                        </button>
-                    ) : (
-                        <button className="inactive"
-                            onClick={() => removePizza()}> 
-                            REMOVE
-                        </button>
-                    )}
-                    
-                </div>
+                <PizzaSelectItem 
+                    key={index}
+                    index={index}
+                    pizza={pizza} />
             ))}
             <button> Next </button>
+            
         </>
     );
 }
