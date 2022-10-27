@@ -26,7 +26,6 @@ const pizzaList = (state = [], action) => {
     }
   
 
-
   const cart = (state = [], action) => {
     switch (action.type) {
         case "ADD_TO_CART":
