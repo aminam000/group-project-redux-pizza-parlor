@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import {Route, HashRouter as Router} from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
