@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import PizzaSelect from '../PizzaSelect/PizzaSelect';
+import CustomerForm from '../CustomerForm/CustomerForm';
 
 
 function App() {
@@ -45,6 +46,12 @@ function App() {
           <PizzaSelect />
         </ul>
       </Route>
+
+      <Route path="/customerForm" exact>
+        <CustomerForm />
+      </Route>
+      
+      
 
       </div>
     </Router>
