@@ -59,7 +59,7 @@ function CustomerForm() {
     const handleTypeChange = (event) => {
         setCustomer({
             ...customer,
-            zip: event.target.value
+            type: event.target.value
         });
         console.log(customer)
     };
@@ -133,15 +133,14 @@ function CustomerForm() {
 
             {/* radio buttons for delivery type */}
             {/* ⬇️ TODO----->>GET VALUE FROM RADIO BUTTONS */}
-            <div>
+            <div onChange={handleTypeChange}>
                 <input
                     type="radio"
                     name="type"
                     value="pickup"
                 />
                 <label htmlFor="pickup">Pickup</label>
-            </div>
-            <div>
+            
                 <input
                     type="radio"
                     name="type"
