@@ -32,6 +32,8 @@ const pizzas = (state = [], action) => {
     switch (action.type) {
         case "ADD_TO_CART":
           return action.payload;
+        case "SET_CLEAR_CART":
+          return state = [];
       }
       return state;
     }
