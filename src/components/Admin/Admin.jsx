@@ -8,6 +8,9 @@ import Checkout from '../Checkout/Checkout';
 
 function Admin(){
 const dispatch = useDispatch();
+const info = useSelector(store => store.info);
+
+
 
     useEffect(() => {
         // On page load.....
@@ -20,6 +23,7 @@ const dispatch = useDispatch();
         axios({
           method: 'GET',
           url: '/api/order'
+        
         })
           .then((response) => {
      
@@ -33,6 +37,8 @@ const dispatch = useDispatch();
           });
       }
 
+
+
   //no input is being taken, just displaying to the dom
 
     return(
@@ -41,14 +47,23 @@ const dispatch = useDispatch();
         <h1>Prime Pizza Orders</h1>
         <table>
             <thead>
-                <th>Name</th>
-                <tr></tr>
-                <th>Time Order Placed</th>
-                <tr></tr>
-                <th>Type</th>
-                <tr></tr>
-                <th>Cost</th>
-                <tr></tr>
+            <tbody>
+                    {info.map((order) => {
+                        return ( 
+                            <tr key={order.id} >
+                                <th>Name</th>
+                                <th>Time Order Placed</th>
+                                <th>Type</th>
+                                <th>Cost</th>
+
+                                <td>{order.name}</td>
+                                <td>{order.time}</td>
+                                <td>{order.type}</td>
+                                <td>{order.price}</td>
+                            </tr>
+                        )
+                    })};
+                </tbody>
             </thead>
             
         </table>
