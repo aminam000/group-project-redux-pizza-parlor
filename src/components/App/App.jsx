@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+
 function App() {
 
   return (
@@ -12,6 +14,15 @@ function App() {
   
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
+      <Router>
+        <div>
+          <ul>
+          <li>
+                <Link to="/">Customer Information</Link>
+              </li>
+          </ul>
+        </div>
+      </Router>
   
     </div>
   );
