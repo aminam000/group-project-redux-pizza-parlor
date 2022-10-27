@@ -1,6 +1,10 @@
+
+import {useEffect} from 'react';
+
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useParams } from 'react-router-dom';
+
 import axios from 'axios';
 
 function PizzaSelect(){
@@ -11,14 +15,24 @@ function PizzaSelect(){
     const pizzaList = useSelector( store => store.pizzaList);
     console.log('pizzalist', pizzaList)
     
-    const handleActive = () => {
+    
+
+    const addPizza = () => {
+        console.log('add pizzza');
         setActive((previousStatus) => {
-          return !previousStatus;
-        });
-      };
+            return !previousStatus;
+          });
+    }
+    const removePizza = () => {
+        console.log('remove pizza');
+        setActive((previousStatus) => {
+            return !previousStatus;
+          });
+    }
 
     return(
         <>
+            <h2>Step 1: Select Your Pizza</h2>
             {pizzaList.map((pizza, index) => (
                 
                 <div key={index}> 
@@ -29,12 +43,12 @@ function PizzaSelect(){
                     
                     {active ? (
                         <button className="active"
-                            onClick={() => handleActive()}> 
+                            onClick={() => addPizza()}> 
                             ADD
                         </button>
                     ) : (
                         <button className="inactive"
-                            onClick={() => handleActive()}> 
+                            onClick={() => removePizza()}> 
                             REMOVE
                         </button>
                     )}
@@ -47,3 +61,4 @@ function PizzaSelect(){
 }
 
 export default PizzaSelect;
+
