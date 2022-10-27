@@ -1,8 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function Checkout({info}) {
-    console.log('in Checkout');
-    // const dipatch = useDispatch();
+    // console.log('in Checkout');
+    const history = useHistory();
+    const dispatch = useDispatch();
     const cart = useSelector(store => store.cart);
 
     let custInfo = {
@@ -16,6 +18,7 @@ function Checkout({info}) {
 
     function handleCheckout() {
         console.log('in handleCheckout');
+        alert('Submitted Order!')
 
         axios.post({
             method: 'POST',
@@ -23,7 +26,12 @@ function Checkout({info}) {
             data: custInfo
         })
           .then(() => {
-            console.log('in POST /orders')
+            // Clears cart
+            dispatch({
+                type: 'SET_CLEAR_CART'
+            });
+            // Sends back to first page
+            history.push('/');
           })
           .catch((err) => {
             console.log('POST error', err);
@@ -56,7 +64,7 @@ function Checkout({info}) {
                                 <td>{pizzaItem.price}</td>
                             </tr>
                         )
-                    })}
+                    })};
                 </tbody>
             </table>
 
