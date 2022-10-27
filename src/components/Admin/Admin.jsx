@@ -7,6 +7,7 @@ import Checkout from '../Checkout/Checkout';
 
 
 function Admin(){
+    console.log('in admin');
 const dispatch = useDispatch();
 const info = useSelector(store => store.info);
 
@@ -55,12 +56,12 @@ const info = useSelector(store => store.info);
                                 <th>Time Order Placed</th>
                                 <th>Type</th>
                                 <th>Cost</th>
-
+                              
                                 <td>{order.name}</td>
                                 <td>{order.time}</td>
                                 <td>{order.type}</td>
                                 <td>{order.price}</td>
-                            </tr>
+                                </tr>
                         )
                     })};
                 </tbody>

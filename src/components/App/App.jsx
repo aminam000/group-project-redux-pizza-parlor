@@ -10,6 +10,7 @@ import CustomerForm from '../CustomerForm/CustomerForm';
 
 
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import Admin from '../Admin/Admin';
 
 
 function App() {
@@ -57,6 +58,10 @@ function App() {
 
       <Route path="/customerForm" exact>
         <CustomerForm />
+      </Route>
+
+      <Route path="/admin" exact>
+        <Admin />
       </Route>
       
       
