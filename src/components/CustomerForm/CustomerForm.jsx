@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState,  } from 'react';
+import { useHistory} from 'react-router-dom';
 
 
 
 function CustomerForm() {
 
     const dispatch = useDispatch(); //allows action request to be sent to reducer
+    const history = useHistory();
 
 
     const [customer, setCustomer] = useState({
@@ -81,6 +82,8 @@ function CustomerForm() {
             type: 'ADD_CUSTOMER',
             payload: customer
         })
+
+        history.push('/checkout');
     }
 
 
@@ -96,32 +99,37 @@ function CustomerForm() {
                 onChange={handleNameChange}
                 type="text"
                 placeholder='Name'
+                required
             />
             <input
                 onChange={handleStreetAddressChange}
                 type="text"
                 placeholder="Street Address"
+                required
 
             />
             <input
                 onChange={handleCityChange}
                 type="text"
                 placeholder='City'
+                required
 
             />
             <input
                 onChange={handleZipChange}
                 type="text"
                 placeholder='Zip'
+                required
             />
 
 
             {/* radio buttons for delivery type */}
-            <div onChange={handleTypeChange}>
+            <div onChange={handleTypeChange} required>
                 <input
                     type="radio"
                     name="type"
                     value="pickup"
+                    required
                 />
                 <label htmlFor="pickup">Pickup</label>
 
@@ -129,10 +137,12 @@ function CustomerForm() {
                     type="radio"
                     name="type"
                     value="delivery"
+                    required
                 />
                 <label htmlFor="delivery">Delivery</label>
             </div>
-            <Link to='/checkout' ><button type='submit' >Next</button></Link>
+            
+                <button type='submit'>Next</button>
         </form>
     </>);
 };
