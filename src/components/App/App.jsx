@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 
 import PizzaSelect from '../PizzaSelect/PizzaSelect';
 import CustomerForm from '../CustomerForm/CustomerForm';
+import Checkout from '../Checkout/Checkout';
 
 
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
@@ -58,6 +59,10 @@ function App() {
 
       <Route path="/customerForm" exact>
         <CustomerForm />
+      </Route>
+
+      <Route path="/checkout" exact>
+        <Checkout />
       </Route>
 
       <Route path="/admin" exact>
