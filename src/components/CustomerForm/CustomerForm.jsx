@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
-import axios from 'axios';
+
 
 
 function CustomerForm() {
 
     const dispatch = useDispatch(); //allows action request to be sent to reducer
-    const pizzas = useSelector(store => store.pizzas); // allows access to redux store
+
 
     const [customer, setCustomer] = useState({
         customer_name: "",
@@ -18,10 +18,9 @@ function CustomerForm() {
         time: '' /// timestamp
     })
 
+
+    
     ///  TODO GET CART PRICE INFO, DISPLAY
-
-
-
     //SET NAME
     const handleNameChange = (event) => {
         setCustomer({
@@ -55,7 +54,6 @@ function CustomerForm() {
         console.log(customer)
     };
     //SET TYPE
-    // TODO -- GET VALUE FROM RADIO BUTTONS
     const handleTypeChange = (event) => {
         setCustomer({
             ...customer,
@@ -63,43 +61,31 @@ function CustomerForm() {
         });
         console.log(customer)
     };
-    console.log('outside of functions', customer)
+    //SET TOTAL
+    // TODO FIGURE OUT HOW TO GET TOTAL
+    const handleTotalChange = (event) => {
+        setCustomer({
+            ...customer,
+            total: event.target.value
+        });
+        console.log(customer)
+    };
 
 
-    ///complete handleSubmit for form. completes POST/Dispatch
+
+    ///complete handleSubmit for form. completes dispatch
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
-        axios({
-            method: 'POST',
-            url: '/api/order',
-            data: customer
+        dispatch({
+            type: 'ADD_CUSTOMER',
+            payload: customer
         })
-        .then(response=>{
-            console.log(response.data);
-
-            dispatch({
-                type: 'ADD_CUSTOMER',
-                payload: response.data
-            })
-        })
-        .catch(error=>{
-            console.log('POST failed:', error)
-        });
     }
 
 
-
-
-
-
-
-
-
-
     return (<>
-
 
         <h1>Here on the customer form</h1>
 
@@ -132,7 +118,6 @@ function CustomerForm() {
 
 
             {/* radio buttons for delivery type */}
-            {/* ⬇️ TODO----->>GET VALUE FROM RADIO BUTTONS */}
             <div onChange={handleTypeChange}>
                 <input
                     type="radio"
@@ -140,7 +125,7 @@ function CustomerForm() {
                     value="pickup"
                 />
                 <label htmlFor="pickup">Pickup</label>
-            
+
                 <input
                     type="radio"
                     name="type"
@@ -148,7 +133,7 @@ function CustomerForm() {
                 />
                 <label htmlFor="delivery">Delivery</label>
             </div>
-<button type='submit'>Next</button>
+            <button type='submit'>Next</button>
         </form>
     </>);
 };
