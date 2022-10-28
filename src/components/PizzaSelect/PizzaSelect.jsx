@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import PizzaSelectItem from '../PizzaSelectItem/PizzaSelectItem';
 
 function PizzaSelect(){
@@ -22,7 +22,10 @@ function PizzaSelect(){
                     index={index}
                     pizza={pizza} />
             ))}
-            <button> Next </button>
+            
+            <Link to={`/customerForm`}>
+                <h2>NEXT</h2>
+            </Link>
             
         </>
     );
