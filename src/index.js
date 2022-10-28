@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 
 
 //reducers
-const pizzaList = (state = [], action) => {
+const pizzas = (state = [], action) => {
     if (action.type === 'ALL_PIZZAS') {
         return action.payload;
       }
@@ -29,7 +29,15 @@ const pizzaList = (state = [], action) => {
   const cart = (state = [], action) => {
     switch (action.type) {
         case "ADD_TO_CART":
-          return action.payload;
+          
+          return [
+            ...state,
+            action.payload
+          ]
+        //TODO remove by id on click from pizzaSelect
+        case "REMOVE_FROM_CART":
+          return state.filter((item => item.name !== action.payload.name))
+          
         case "SET_CLEAR_CART":
           return state = [];
       }
@@ -44,7 +52,7 @@ const storeInstance = createStore(
      //this is out redux store
 
  
-      pizzaList,
+      pizzas,
       info,
       cart,
     }),
