@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -131,7 +132,7 @@ function CustomerForm() {
                 />
                 <label htmlFor="delivery">Delivery</label>
             </div>
-            <button type='submit'>Next</button>
+            <Link to='/checkout' ><button type='submit' >Next</button></Link>
         </form>
     </>);
 };
