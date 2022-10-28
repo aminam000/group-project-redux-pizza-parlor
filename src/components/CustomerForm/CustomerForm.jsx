@@ -19,7 +19,7 @@ function CustomerForm() {
     })
 
 
-    
+
     ///  TODO GET CART PRICE INFO, DISPLAY
     //SET NAME
     const handleNameChange = (event) => {
@@ -70,8 +70,6 @@ function CustomerForm() {
         });
         console.log(customer)
     };
-
-
 
     ///complete handleSubmit for form. completes dispatch
 
